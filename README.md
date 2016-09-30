@@ -1,16 +1,17 @@
 # Go Server for Message In A Bottle
 ## Usage
+Currently, we're running our Go server on an AWS EC2 instance at `52.41.253.190:9000`
+
 Send a message:
 ```
 curl -i -H "Content-Type: application/json" \
 -X POST \
 -d '{"text":"xyz","latitude":119.123123,"longitude": 120.1222}' \
-localhost:8080/send/
+52.41.253.190:9000/send/
 ```
-
 Get messages: `localhost:8080/messages/`
 
-## Running
+## Running Locally
 1. Postgres db: `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
 2. Go server: `go run server.go`
 
