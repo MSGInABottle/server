@@ -12,7 +12,7 @@ curl -i -H "Content-Type: application/json" \
 Get messages: `curl 52.41.253.190:9000/messages/`
 
 ## Running Locally
-1. Postgres db: `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
+1. Starting Postgres: `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
 2. Go server: `go run server.go`
 
 ## Set Up
