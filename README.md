@@ -9,7 +9,7 @@ curl -i -H "Content-Type: application/json" \
 -d '{"text":"xyz","latitude":119.123123,"longitude": 120.1222}' \
 52.41.253.190:9000/send/
 ```
-Get messages: `localhost:8080/messages/`
+Get messages: `curl 52.41.253.190:9000/messages/`
 
 ## Running Locally
 1. Postgres db: `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
