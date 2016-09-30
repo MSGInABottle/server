@@ -78,5 +78,5 @@ func messagesHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/send/", sendHandler)
 	http.HandleFunc("/messages/", messagesHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":9000", nil))
 }
