@@ -59,20 +59,26 @@ func sendHandler(w http.ResponseWriter, r *http.Request) {
 func messagesHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("Entered Messages Handler")
 
-	rows, err := db.Query("SELECT * FROM message")
+	var (
+		message  Message
+		messages []Message
+	)
+
+	rows, err := db.Query("SELECT text, location[0], location[1], expiry FROM message")
+
 	if err != nil {
 		log.Println(err.Error())
 	}
 
 	for rows.Next() {
-		var text, point string
-		var time time.Time
-		err := rows.Scan(&text, &point, &time)
+		err := rows.Scan(&message.Text, &message.Latitude, &message.Longitude, &message.Expiry)
+		messages = append(messages, message)
 		if err != nil {
 			log.Println(err.Error())
 		}
-		log.Println(text, point, time)
 	}
+
+	json.NewEncoder(w).Encode(messages)
 }
 
 func main() {
