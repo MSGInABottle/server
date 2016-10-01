@@ -9,9 +9,9 @@ curl -i -H "Content-Type: application/json" \
 -d '{"text":"xyz","latitude":119.123123,"longitude": 120.1222}' \
 52.41.253.190:9000/send/
 ```
-Get messages: `curl 52.41.253.190:9000/messages/?latitude=119.123123&longitude=120.1222'
+Get messages: `curl 52.41.253.190:9000/messages/?latitude=119.123123&longitude=120.1222`
 
-Returns an array of messages in the last 24 hours that fall within a 0.001 radius of the given coordinate
+It returns an array of messages in the last 24 hours that are within a 0.001 radius of the coordinate
 
 ## Running Locally
 1. Starting Postgres: `pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start`
