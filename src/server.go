@@ -59,12 +59,12 @@ func sendHandler(w http.ResponseWriter, r *http.Request) {
 func messagesHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("Entered Messages Handler")
 
-	var (
-		message  Message
-		messages []Message
-	)
+	var message Message
+	messages := []Message{}
 
-	rows, err := db.Query("SELECT text, location[0], location[1], expiry FROM message")
+	rows, err := db.Query(
+		"SELECT text, location[0], location[1], expiry FROM message WHERE expiry >= NOW() AND location <@ circle(point($1, $2), 0.001)",
+		r.URL.Query().Get("latitude"), r.URL.Query().Get("longitude"))
 
 	if err != nil {
 		log.Println(err.Error())
