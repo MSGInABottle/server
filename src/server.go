@@ -78,6 +78,8 @@ func messagesHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+	w.Header().Set("Access-Control-Allow-Origin", r.Header.Get("Origin"))
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
 	json.NewEncoder(w).Encode(messages)
 }
 
