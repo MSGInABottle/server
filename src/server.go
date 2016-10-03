@@ -52,6 +52,8 @@ func sendHandler(w http.ResponseWriter, r *http.Request) {
 		log.Println(err.Error())
 	}
 
+	w.Header().Set("Access-Control-Allow-Origin", r.Header.Get("Origin"))
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
 	w.WriteHeader(200)
 }
 
